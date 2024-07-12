@@ -1,6 +1,6 @@
 swiper-container{
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
 }
 
 swiper-slide{
@@ -10,6 +10,32 @@ swiper-slide{
   justify-content: center;
 }
 
+ion-content{
+  --texto: #F0DDED;
+  --fondo: #170A16;
+  --bg-primary: #e01789;
+  --bg-secondary: #d863ab;
+  --bg-accent: #ae1eb8; 
+}
+
 .cool-title{
-  color: red;
+  color: #F0DDED;
+}
+
+.custom-bg-color{
+  --background: var(--fondo);
+}
+
+.sp-bg-color{
+  background-color: var(--bg-primary);
+  color: var(--texto);
+  
+}
+
+// ion-avatar{
+//   --border-radius: 5px;
+// }
+
+.style-avatar {
+   --border-radius: 5px;
 }
