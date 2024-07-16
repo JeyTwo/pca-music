@@ -41,8 +41,23 @@ export class IntroPage implements OnInit {
   ]
 
   constructor(private router: Router, private storage: Storage) { }
-
+  //Cuando se va a cargar la pagina
   ngOnInit() {
+  }
+
+  //Cuando ya esto por entrar a la pagina
+  ionViewWillEnter(){
+
+  }
+
+  //Cuando ya entre a la pagina
+  ionViewDidEnter(){
+
+  }
+
+  //Cuando se va a dejar la pagina
+  ionViewWillLeave(){
+    
   }
 
   close(){
