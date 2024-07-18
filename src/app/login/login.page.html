@@ -40,8 +40,9 @@
       </ng-container>
     </div>
 
-    <ion-button type="sumit" [disabled]="!loginForm.valid">
+    <ion-button type="sumit" expand="block" [disabled]="!loginForm.valid">
       Login
+      <ion-icon name="log-in-outline"></ion-icon>
     </ion-button>
   </form>
 </ion-content>
