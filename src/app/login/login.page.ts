@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticateService } from '../services/authenticate.service';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,16 @@ export class LoginPage implements OnInit {
       {type: "pattern", message: "Email invalido"}
     ],
     passkey:[
-      {type: "required", message:"Password invalido"}
+      {type: "required", message:"Password es obligatorio"}
     ]
   }
-
-  constructor(private formBuilder: FormBuilder, private authSerice: AuthenticateService, private navCtrl: NavController) {
+  errorMessage: any;
+  constructor(private formBuilder: FormBuilder, 
+    private authService: AuthenticateService, 
+    private navCtrl: NavController,
+    private alertController: AlertController,
+    private storage: Storage
+  ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -44,9 +50,23 @@ export class LoginPage implements OnInit {
 
   loginUser(dataLogin: any){
     console.log(dataLogin)
-    this.authSerice.loginUser(dataLogin).then(res => {
+    this.authService.loginUser(dataLogin).then(res => {
+      this.storage.set("isUserLoggedIn", true);
       this.navCtrl.navigateForward("/home")
+    }).catch(err => {
+      this.errorMessage = err;
+      this.presentAlert(this.errorMessage)
     })
   }
 
+  async presentAlert(mss: string) {
+    const alert = await this.alertController.create({
+      header: 'Se ha presentado un error!',
+      subHeader: 'Verifica los datos',
+      message: mss,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 }
