@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
     ]
   }
   errorMessage: any;
-  constructor(private formBuilder: FormBuilder, 
+  constructor(
+    private formBuilder: FormBuilder, 
     private authService: AuthenticateService, 
     private navCtrl: NavController,
     private alertController: AlertController,
