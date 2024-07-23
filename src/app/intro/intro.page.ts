@@ -45,7 +45,7 @@ export class IntroPage implements OnInit {
   ngOnInit() {
   }
 
-  //Cuando ya esto por entrar a la pagina
+  //Cuando ya estoy por entrar a la pagina
   ionViewWillEnter(){
 
   }
@@ -60,9 +60,13 @@ export class IntroPage implements OnInit {
     
   }
 
+  login(){
+    console.log("Estoy intentando entrar al login")
+    this.router.navigateByUrl("/login");
+  }
   close(){
-    //console.log("Esto intentando cerrar la intro")
-    this.storage.set("isIntroShowed", true)
-    this.router.navigateByUrl("/home")
+    //console.log("Estoy intentando cerrar la intro")
+    //this.storage.set("isIntroShowed", true)
+    this.router.navigateByUrl("/menu/home")
   }
 }

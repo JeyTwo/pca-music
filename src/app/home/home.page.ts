@@ -6,8 +6,23 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  artists = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ]
 
-  
+  slideOps = {
+    initialSlide: 2,
+    slidesPerView: 4,
+    canteredSlides: true,
+    speed: 400
+  }
 
   constructor(private router: Router) {}
   intro(){
