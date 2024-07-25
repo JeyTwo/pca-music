@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MusicService } from '../services/music.service';
+import { ModalController } from '@ionic/angular';
+import { SongModalPage } from '../song-modal/song-modal.page';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,8 @@ export class HomePage implements OnInit{
 
   constructor(
     private router: Router,
-    private musicService: MusicService) {}
+    private musicService: MusicService,
+    private modalController: ModalController) {}
 
   intro(){
     this.router.navigateByUrl("/intro")
@@ -42,6 +45,21 @@ export class HomePage implements OnInit{
       this.artists = data;
       console.log(data)
     })
+  }
+
+  async showSongs(artists: any){
+    console.log(artists)
+    const songs = await this.musicService.getArtistTracks(artists.id);
+    const modal = await this.modalController.create(
+      {
+        component: SongModalPage,
+        componentProps: {
+          name: artists.name,
+          id: artists.id
+        }
+      }
+    );
+    modal.present();
   }
 
 }
