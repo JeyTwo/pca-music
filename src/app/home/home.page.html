@@ -10,8 +10,8 @@
   <swiper-container slides-per-view="4" speed="400">
     <swiper-slide *ngFor="let artists of artists" >
       <ion-avatar>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGSuxZmn7KoEjYZhxYx43uUhEWBFGYb8Kp9Q&s" alt="shakira">
-        <span>Nombre del artista</span>
+        <img src="{{artists.image}}" alt=""/>
+        <span>{{artists.name}}</span>
       </ion-avatar>
     </swiper-slide>
   </swiper-container>
