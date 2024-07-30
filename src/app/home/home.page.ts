@@ -13,7 +13,11 @@ import { SongModalPage } from '../song-modal/song-modal.page';
 export class HomePage implements OnInit{
   artistsJson: any;
   artists: any;
-
+  song = {
+    name: '',
+    playing: false,
+    preview_url: ''
+  }
   //slideOps = {
   //  initialSlide: 2,
   //  slidesPerView: 4,
@@ -59,6 +63,9 @@ export class HomePage implements OnInit{
         }
       }
     );
+    modal.onDidDismiss().then(dataReturned =>{
+      this.song = dataReturned.data;
+    })
     modal.present();
   }
 

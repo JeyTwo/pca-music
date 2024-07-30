@@ -26,4 +26,8 @@ export class SongModalPage implements OnInit {
     await this.modalController.dismiss();
   }
 
+  async selectSong(song:any){
+    await this.modalController.dismiss(song)
+  }
+
 }
